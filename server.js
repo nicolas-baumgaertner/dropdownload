@@ -16,14 +16,13 @@ app.get("/download", (req, res) => {
     userAgent: req.headers["user-agent"] || "unknown"
   };
 
-  fs.appendFileSync("download.log", JSON.stringify(logEntry) + "\n");
+  const line = JSON.stringify(logEntry);
+
+  console.log(line); // 👈 DAS ist der Key für Railway Logs
+  fs.appendFileSync("download.log", line + "\n");
 
   res.download(
     path.join(__dirname, "pdf", "beispiel.pdf"),
     "beispiel.pdf"
   );
-});
-
-app.listen(PORT, () => {
-  console.log("Server läuft");
 });
