@@ -26,3 +26,7 @@ app.get("/download", (req, res) => {
     "beispiel.pdf"
   );
 });
+
+app.listen(PORT, () => {
+  console.log("Server läuft");
+});
